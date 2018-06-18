@@ -1,0 +1,181 @@
+@segment-red-color: #9A150E;
+@segment-yellow-color: #CC7722;
+@input-border-color: #543948;
+@class-label-color: #9A150E;
+@registration-panel-color: #CC7722;
+@registration-panel-border-color: #f0cca8;
+
+@media (min-width: 200px) {
+  .header {
+    height: 250px;
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    height: 550px;
+  }
+}
+
+.class-info > .row {
+  padding: 10px;
+}
+
+.panel-registration > .row {
+  padding: 10px;
+}
+
+.fc-event {
+  cursor: pointer;
+}
+
+.btn-registration {
+  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+}
+
+.btn-registration {
+  color: #fff;
+  background-color: #CC7722;
+  border-color: #99591a;
+}
+
+.btn-registration:hover,.btn-registration.hover {
+  background-color: #ae661e;
+  background-image: none;
+  color: #fff;
+}
+
+.btn-registration:focus, .btn-registration.focus {
+  background-color: #ae661e;
+  background-image: none;
+  color: #fff;
+  border-color: #6d4012;
+}
+
+//.btn-registration {
+//  background-image: -webkit-linear-gradient(top,#d1cead 0,#837e49 100%);
+//  background-image: -o-linear-gradient(top,#d1cead 0,#837e49 100%);
+//  background-image: -webkit-gradient(linear,left top,left bottom,from(#d1cead),to(#837e49));
+//  background-image: linear-gradient(to bottom,#d1cead 0,#837e49 100%);
+//  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1cead', endColorstr='#837e49', GradientType=0);
+//  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+//  background-repeat: repeat-x;
+//  border-color: #524f2e;
+//}
+
+//.btn-registration {
+//  color: #fff;
+//  background-color: #d21d14;
+//  border-color: #5d0d09;
+//}
+
+.panel-registration {
+  border-color: @registration-panel-border-color;
+}
+
+.panel-registration > .panel-heading {
+  background-image: linear-gradient(to bottom,#e19951 0,#CC7722 100%);
+  font-weight: bold;
+}
+
+.panel-registration>.panel-heading {
+  color: #fff;
+  background-color: @registration-panel-color;
+  border-color: @registration-panel-border-color;
+}
+
+.class-label {
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  display: block;
+  width: 150px;
+  background: @class-label-color 50% 50% / cover repeat;
+  border-radius: 2px;
+}
+
+.dialog-header {
+  background: url('../images/modal-header.jpg') no-repeat center center;
+  vertical-align: middle;
+  max-width: 100%;
+  max-height: 500px;
+  min-height: 150px;
+  width: 100%;
+  margin-bottom: 15px;
+  margin-top: 5px;
+}
+
+.header {
+  background: url('../images/header.jpg') no-repeat;
+  background-size: cover;
+  vertical-align: middle;
+  max-width: 100%;
+  max-height: 100%;
+  margin-bottom: 15px;
+  width:100%;
+}
+
+.segment {
+  width: auto;
+  margin: 1px;
+  color: #FFFFFF;
+  border-radius: 2px;
+  padding: 20px 1em;
+  text-align: center;
+
+  h1 {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: normal;
+    margin: 0;
+  }
+}
+
+.segment-red {
+  background: @segment-red-color 50% 50%/cover repeat;
+}
+
+.segment-yellow {
+  background: @segment-yellow-color 50% 50%/cover repeat;
+}
+
+.bottom-align {
+  vertical-align: bottom;
+}
+
+.q {
+  padding: 10px;
+  margin-bottom: 5px;
+
+  .text_field {
+    background: #FDFFFF;
+    border: 1px solid @input-border-color;
+    border-radius: 2px;
+    color: #576664;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    margin: 1px 0;
+    padding: 15px;
+  }
+}
+
+/* The starting CSS styles for the enter animation */
+.fade.ng-enter {
+  transition:0.5s linear all;
+  opacity:0;
+}
+
+/* The finishing CSS styles for the enter animation */
+.fade.ng-enter.ng-enter-active {
+  opacity:1 !important;
+}
+
+.faded-row {
+  opacity: 1;
+}
+
+input.ng-invalid {
+  border-color: red;
+}

@@ -1,0 +1,143 @@
+<!-
+Ideas:
+
+After click yes and sending back to server (simulated for now)
+send alert: Thank you for registering for a class today!  You will recieve an email with instructions about the class and the date and time.  Click _here_ to get text alerts.
+
+->
+<div>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="dialog-header"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="segment segment-yellow"><h1 style="font-size: 18px; font-family: sans-serif;">Class Information</h1></div>
+                </div>
+            </div>
+
+            <div class="row faded faded-row class-info" ng-if="vm.selectedClass">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>
+                            <div class="class-label">Instructor</div>
+                        </div>
+                        <div>
+                            Put Profile Picture Here!
+                        </div>
+                        <div>
+                            {{vm.selectedClass.instructor.name}}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <div class="class-label">Class Description</div>
+                        </div>
+                        <div ng-bind-html="vm.selectedClass.description">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>
+                            <div class="class-label">Class Start</div>
+                        </div>
+                        <div>
+                            {{vm.selectedClass.start.format("dddd, MMMM Do YYYY, h:mm a")}}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <div class="class-label">Duration</div>
+                        </div>
+                        <div>
+                            {{vm.selectedClass.duration}} hrs
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 q" style="text-align: center;">
+                    <button type="button" class="btn btn-info" ng-click="vm.browseClasses()">Browse Classes</button>
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="vm.selectedClass" class="fade faded-row">
+            <form name="registrationForm" ng-submit="vm.onSubmit(registrationForm.$valid)" novalidate>
+
+                <div class="section">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="segment segment-yellow"><h1 style="font-size: 18px; font-family: sans-serif;">Student Information</h1></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 q">
+                            <div class="form-group" ng-class="{ 'has-error' : registrationForm.firstName.$invalid && !registrationForm.firstName.$pristine }">
+                                <label for="first-name">First Name*</label>
+                                <div><input name="firstName" id="first-name" class="text_field" ng-model="vm.firstName" required></div>
+                                <p ng-show="registrationForm.firstName.$invalid && !registrationForm.firstName.$pristine" class="help-block">Please enter your first name.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 q">
+                            <div class="form-group" ng-class="{ 'has-error' : registrationForm.lastName.$invalid && !registrationForm.lastName.$pristine }">
+                                <label for="last-name">Last Name*</label>
+                                <div><input name="lastName" id="last-name" class="text_field" ng-model="vm.lastName" required></div>
+                                <p ng-show="registrationForm.lastName.$invalid && !registrationForm.lastName.$pristine" class="help-block">Please enter your last name.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 q">
+                            <div class="form-group" ng-class="{ 'has-error' : registrationForm.email.$invalid && !registrationForm.email.$pristine }">
+                                <label for="email">Email*</label>
+                                <div><input name="email" type="email" id="email" class="text_field" ng-model="vm.email" style="width:100%;" required></div>
+                                <p ng-show="registrationForm.email.$invalid && !registrationForm.email.$pristine" class="help-block">Please enter a valid email address.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 q">
+                            <div class="form-group" ng-class="{ 'has-error' : registrationForm.phoneNumber.$invalid && !registrationForm.phoneNumber.$pristine }">
+                                <label for="phone-number">Phone Number</label>
+                                <div><input name="phoneNumber" id="phone-number" class="text_field" ng-model="vm.phone" ui-us-phone-number-mask></div>
+                                <p ng-show="registrationForm.phoneNumber.$invalid && !registrationForm.phoneNumber.$pristine" class="help-block">Please enter a valid phone number.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="segment segment-yellow"><h1 style="font-size: 18px; font-family: sans-serif;">Registration</h1></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 q">
+                            <p>Keep in mind that space is limited for classes and registering will fill a slot.
+                                Please be courteous and show up on time prepared for the class.
+                                The class description will include any needed materials.
+                            </p>
+                            <button class="btn btn-primary" ng-disabled="registrationForm.$invalid">Register</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 q">
+                            <input type="checkbox"> Receive Email Alerts
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
