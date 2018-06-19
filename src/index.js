@@ -1,6 +1,7 @@
 import './styles/styles.less';
 import '../node_modules/fullcalendar/dist/fullcalendar.css';
 import '../node_modules/font-awesome/css/font-awesome.css';
+import './styles/gallery.less';
 
 /* controllers */
 import HomeController from './controllers/home-controller';

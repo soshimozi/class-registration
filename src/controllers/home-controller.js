@@ -11,6 +11,39 @@ export default class {
         this.companyTagLine = "UNITING MIND, BODY, AND SOUL";
 
         this._initializeMap();
+
+        this.galleryPhotos = [
+            {src: 'http://farm9.staticflickr.com/8042/7918423710_e6dd168d7c_b.jpg', desc: 'Image 01'},
+            {src: 'http://farm9.staticflickr.com/8449/7918424278_4835c85e7a_b.jpg', desc: 'Image 02'},
+            {src: 'http://farm9.staticflickr.com/8457/7918424412_bb641455c7_b.jpg', desc: 'Image 03'},
+            {src: 'http://farm9.staticflickr.com/8179/7918424842_c79f7e345c_b.jpg', desc: 'Image 04'},
+            {src: 'http://farm9.staticflickr.com/8315/7918425138_b739f0df53_b.jpg', desc: 'Image 05'},
+            {src: 'http://farm9.staticflickr.com/8461/7918425364_fe6753aa75_b.jpg', desc: 'Image 06'}
+        ];
+
+        // initial image index
+        this._Index = 0;
+
+    }
+
+    // if a current image is the same as requested image
+    isActive (index) {
+        return this._Index === index;
+    }
+
+    // show prev image
+    showPrev () {
+        this._Index = (this._Index > 0) ? --this._Index : this.photos.length - 1;
+    }
+
+    // show next image
+    showNext() {
+        this._Index = (this._Index < this.photos.length - 1) ? ++this._Index : 0;
+    }
+
+    // show a certain image
+    showPhoto (index) {
+        this._Index = index;
     }
 
     _initializeMap() {
