@@ -5,6 +5,12 @@
 @registration-panel-color: #CC7722;
 @registration-panel-border-color: #f0cca8;
 
+//@media (min-width: 768px) {
+//  .profile-picture {
+//      text-align: right;
+//  }
+//}
+
 @media (min-width: 200px) {
   .header {
     height: 250px;
@@ -178,4 +184,75 @@
 
 input.ng-invalid {
   border-color: red;
+}
+
+@media (min-width: 768px) {
+  .contain-50 {
+    width: 50% !important;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .contain-80 {
+    width: 100% !important;
+  }
+}
+
+.contain-80 {
+  width: 80%;
+  object-fit: contain;
+}
+
+//@media (min-width: 1024px) {
+//  .contain {
+//    width: 50%;
+//  }
+//}
+//
+//@media (min-width: 300px) {
+//  .contain {
+//    width: 80%;
+//  }
+//}
+
+@media (max-width: 768px) {
+  #map {
+    height: 250px !important;
+  }
+}
+
+#map {
+  height: 500px;
+}
+
+@media (max-width: 768px) {
+  .about-text {
+    margin: 15px;
+    padding: 0 20px 0;
+  }
+}
+
+
+.contain-50 {
+  width: 80%;
+  object-fit: contain;
+}
+
+
+.about-text {
+  display: block;
+}
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+
+  align-items: center;
 }

@@ -15,7 +15,8 @@
     "underscore": true,
     "_": true,
     "angular": true,
-    "moment": true
+    "moment": true,
+    "$": true
   },
   "rules": {
     "no-const-assign": "warn",

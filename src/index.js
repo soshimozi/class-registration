@@ -4,7 +4,7 @@ import '../node_modules/font-awesome/css/font-awesome.css';
 
 /* controllers */
 import HomeController from './controllers/home-controller';
-import SelectClassDateModalController from './controllers/select-class-date-modal-controller';
+import ClassRegistrationController from './controllers/class-registration-controller';
 
 require('angular-animate');
 require('bootstrap');
@@ -26,6 +26,11 @@ const app = angular.module('calendar-app', [
 ]);
 
 app.controller('HomeController', HomeController);
-app.controller('SelectClassDateModalController', SelectClassDateModalController);
+app.controller('ClassRegistrationController', ClassRegistrationController);
 
 app.config(require('./routes'));
+
+
+app.run(($browser) => {
+    $browser.baseHref = function () { return "/" };
+});

@@ -1,13 +1,16 @@
-const routes = ($routeProvider, $locationProvider) => {
+const routes = ($routeProvider) => {
     $routeProvider
-        .when('/', {
+        .when('/home', {
             template: require('./views/home.html'),
             controller: 'HomeController',
             controllerAs: 'vm',
         })
-        .otherwise({ redirectTo: '/' });
-
-    $locationProvider.html5Mode(true);
+        .when('/register-class', {
+            template: require('./views/class-registration.html'),
+            controller: 'ClassRegistrationController',
+            controllerAs: 'vm',
+        })
+        .otherwise({ redirectTo: '/home' });
 };
 
 module.exports = routes;

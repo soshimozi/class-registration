@@ -1,220 +1,95 @@
+/* global mapboxgl */
+
 export default class {
 
-    constructor($scope, $uibModal, $q, $sce) {
+    constructor() {
+        this.yogaPhotos = [require('../images/yoga-1.jpg'), require('../images/yoga-2.jpg'), require('../images/yoga-3.jpg'), require('../images/yoga-4.jpg')];
 
-        this.$uibModal = $uibModal;
-        this.$scope = $scope;
-        this.$q = $q;
+        this.companyAddress = "32999 Yucaipa Boulevard, Suite 118, Yucaipa, California 92399, United States";
+        this.companyPhone = "(909) 283-8046";
+        this.companyName = "CENTERED YOGA & DANCE";
+        this.companyTagLine = "UNITING MIND, BODY, AND SOUL";
 
-        this.classes = [{
-                classId: 2391,
-                name: "Beginning Adult Dance",
-                description: $sce.trustAsHtml("A beginners class in dance for basics such as ..., ..., and ...<br/><h1>This is a test</h1>"),
-                instructor: {name: "Ms Marie", profilePicture: require('../images/header.jpg')},
-                duration: 2.0,
-                date: "6/15/2018",
-                time: "1:00 PM"
-            },
-            {
-                classId: 2392,
-                name: "Beginning Teen Dance",
-                description: $sce.trustAsHtml("A beginners class in dance for basics such as ..., ..., and ...<br/><h1>This is a test</h1>"),
-                instructor: {name: "Ms Marie", profilePicture: require('../images/header.jpg')},
-                duration: 2.0,
-                date: "6/15/2018",
-                time: "4:00 PM"
-            },
-            {
-                classId: 2393,
-                name: "Advanced Adult Dance",
-                description: $sce.trustAsHtml("A beginners class in dance for basics such as ..., ..., and ...<br/><h1>This is a test</h1>"),
-                instructor: {name: "Ms Marie", profilePicture: require('../images/header.jpg')},
-                duration: 2.0,
-                date: "6/17/2018",
-                time: "1:00 PM"
-            },
-            {
-                classId: 2394,
-                name: "Advanced Teen Dance",
-                description: $sce.trustAsHtml("A beginners class in dance for basics such as ..., ..., and ...<br/><h1>This is a test</h1>"),
-                instructor: {name: "Ms Marie", profilePicture: require('../images/header.jpg')},
-                duration: 2.0,
-                date: "6/17/2018",
-                time: "4:00 PM"
-            }];
-
-        // // TODO: flatten times and id will be registrationid
-            // // so availableDates: [ {id: 0, date: "6/15/2018", time: "1:00 PM"}, {id: 0, date: "6/15/2018", time: "4:00 PM"} ... ],
-            // availableDates: [
-            //     {
-            //         id: 0,
-            //         date: "6/15/2018",
-            //         times: [
-            //             "1:00 PM",
-            //             "4:00 PM"
-            //         ]
-            //
-            //     },
-            //     {
-            //         id: 1,
-            //         date: "6/16/2018",
-            //         times: [
-            //             "1:00 PM",
-            //             "3:00 PM"
-            //         ]
-            //     }
-            // ]
-        //};
-
-
-        //this.classes = [];
-        //this.classes.push(clz);
+        this._initializeMap();
     }
 
-    getAvailableTimes() {
-        return [
-            "1:00pm",
-            "3:00pm"
-        ]
-    }
+    _initializeMap() {
 
-    onSubmit() {
-        console.log('onSubmit');
-
-        var ID = function () {
-            // Math.random should be unique because of its seeding algorithm.
-            // Convert it to base 36 (numbers + letters), and grab the first 9 characters
-            // after the decimal.
-            return `${Math.random().toString(36).substr(2, 5)}${Math.random().toString(10).substr(2, 4)}`.toUpperCase();
-        };
-
-        this.$uibModal.open({
-            animation: true,
-            ariaLabelledBy: 'modal-title-top',
-            ariaDescribedBy: 'modal-body-top',
-            template: require('../templates/register-thank-you.html'),
-            size: 'lg',
-            backdrop: 'static',
-            keyboard: 'false',
-            controller: class {
-                constructor($scope, $uibModalInstance, className, registrationNumber) {
-
-                    console.log('scope', $scope);
-                    // console.log('number', registrationNumber);
-                    //
-                    $scope.className = className;
-                    $scope.registrationNumber = registrationNumber;
-
-                    $scope.close = () => {
-                        $uibModalInstance.close()
-                    };
-
-                    // $scope.registrationNumber = registrationNumber;
-
-                    //this.$uibModalInstance = $uibModalInstance;
-                }
-
-                // close() {
-                //     this.$uibModalInstance.close();
-                // }
-            },
-            resolve: {
-                className: () => {
-                    return this.selectedClass.name;
-                },
-                registrationNumber: () => {
-                    return `${this.selectedClass.classId}${ID()}`;
-                }
-            }
+        mapboxgl.accessToken = 'pk.eyJ1Ijoic29zaGltbyIsImEiOiJjamlsMDY5ZmkyYWtwM3Bwbmk1Y3Zta3V2In0.3k7wZ5-r4uTUMEcTdyB6MQ';
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v10?optimize=true',
+            center: [-117.08483, 34.032741], // starting position
+            zoom: 14 // starting zoom
         });
 
-    }
-
-    browseClasses() {
-
-        this.$uibModal.open({
-            animation: true,
-            ariaLabelledBy: 'modal-title-top',
-            ariaDescribedBy: 'modal-body-top',
-            template: require('../templates/select-class-date'),
-            size: 'lg',
-            controllerAs: 'vm',
-            backdrop: 'static',
-            keyboard: 'false',
-            controller: 'SelectClassDateModalController',
-            resolve: {
-                events: () => {
-                    return underscore.map(this.classes, (c) => { return {
-                        classId: c.classId,
-                        name: c.name,
-                        description: c.description,
-                        instructor: c.instructor,
-                        duration: c.duration,
-                        start: this._formatDate(c.date, c.time),
-                        end_time: this._addDateHours(this._formatDate(c.date, c.time), c.duration),
-                        title: c.name,
-                        allDay: false
-                    }});
-                }
-            }
-        }).result.then((data) => {
-            this.selectedClass = data;
-        }, () => {
-            console.log('dialog dismissed');
-        });
-    }
+        // Add zoom and rotation controls to the map.
+        map.addControl(new mapboxgl.NavigationControl());
 
 
-    _loadEvents() {
+        map.on('load', function() {
+            map.loadImage(require('../images/map-marker-icon.png'), function(error, image) {
 
-        return this.$q((resolve) => {
-
-            let events = [];
-
-            for (let c in this.classes) {
-                let selectedClass = this.classes[c];
-                for (let d in selectedClass.availableDates) {
-                    let availableDate = selectedClass.availableDates[d];
-
-                    for (let t in availableDate.times) {
-                        let time = availableDate.times[t];
-
-                        //let startdatetime = this._formatDate(availableDate.date, time);
-                        //let enddatetime = this._addDateHours(startdatetime, this.selectedClass.duration);
-
-                        var event = {
-                            name: selectedClass.name,
-                            description: selectedClass.description,
-                            instructor: selectedClass.instructor,
-                            duration: selectedClass.duration,
-                            start: this._formatDate(availableDate.date, time),
-                            end_time: this._addDateHours(this._formatDate(availableDate.date, time), selectedClass.duration),
-                            title: `${selectedClass.name}`,
-                            allDay: false
-                        };
-
-                        events.push(event);
+                if (error) throw error;
+                map.addImage('map-pointer', image);
+                map.addLayer({
+                    "id": "places",
+                    "type": "symbol",
+                    "source": {
+                        "type": "geojson",
+                        "data": {
+                            "type": "FeatureCollection",
+                            "features": [{
+                                "type": "Feature",
+                                "properties": {
+                                    "description": "<strong>Make it Mount Pleasant</strong><p><a href=\"http://www.mtpleasantdc.com/makeitmtpleasant\" target=\"_blank\" title=\"Opens in a new window\">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>"
+                                },
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [-117.08483, 34.032741]
+                                }
+                            }]
+                        }
+                    },
+                    "layout": {
+                        "icon-image": 'map-pointer',
+                        "icon-allow-overlap": true,
+                        "icon-size": .75
                     }
-                }
-            }
-
-            console.log('events:', events);
-
-            resolve(events);
+                });
+            });
         });
 
-    }
+        // // Change the cursor to a pointer when the mouse is over the places layer.
+        // map.on('mouseenter', 'places', function () {
+        //     map.getCanvas().style.cursor = 'pointer';
+        // });
+        //
+        // // Change it back to a pointer when it leaves.
+        // map.on('mouseleave', 'places', function () {
+        //     map.getCanvas().style.cursor = '';
+        // });
+        //
+        // // When a click event occurs on a feature in the places layer, open a popup at the
+        // // location of the feature, with description HTML from its properties.
+        // map.on('click', 'places', function (e) {
+        //     var coordinates = e.features[0].geometry.coordinates.slice();
+        //     var description = e.features[0].properties.description;
+        //
+        //     // Ensure that if the map is zoomed out such that multiple
+        //     // copies of the feature are visible, the popup appears
+        //     // over the copy being pointed to.
+        //     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        //         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        //     }
+        //
+        //     new mapboxgl.Popup()
+        //         .setLngLat(coordinates)
+        //         .setHTML(description)
+        //         .addTo(map);
+        // });
 
-    _addDateHours(dt, hrs) {
-        let m = moment(dt.toISOString());
-        return m.add(hrs, 'hours');
     }
-
-    _formatDate(dt, tm) {
-        let date = new Date(`${dt} ${tm}`);
-        return date;
-    }
-
 
 }
 
