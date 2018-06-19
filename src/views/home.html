@@ -13,12 +13,12 @@
 
         <div class="row">
             <div class="col-md-12">
-                <h3 style="font-size:43px;font-weight:600;">{{vm.companyName}}</h3>
-                <h1 style="font-size:14px;color: rgb(119,119,119);">{{vm.companyTagLine}}</h1>
+                <h3 class="company-header" >{{vm.companyName}}</h3>
+                <h1 class="company-tag-line">{{vm.companyTagLine}}</h1>
             </div>
 
         </div>
-        <div class="row">
+        <div class="row margin-top-15">
             <div class="col-md-12">
                 <img ng-src="{{vm.yogaPhotos[0]}}" class="contain-50 hero-image" style="margin:0 auto;max-height:500px;"/>
             </div>
@@ -36,18 +36,18 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <h2 style="font-size:22px;text-align:left;padding-left:10px;text-transform:uppercase;font-weight: 700;border-bottom-width: 1px;border-bottom-style:solid;padding-bottom:10px;">About Us</h2>
+                <h2 class="section-header">About Us</h2>
             </div>
             <div class="col-md-2"></div>
         </div>
-        <div class="row" style="margin-top:15px;">
+        <div class="row margin-top-15">
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <div class="row">
-                    <div class="col-md-6 about-text pull-right" style="text-align: left;vertical-align: middle;margin: 0;margin-bottom: 20px;">
-                        <h4 style="font-size:22px;color:rgb(77,77,77);font-weight:400;">Yoga for Everyone</h4>
-                        <div style="font-size:14px;color:rgb(117,117,117);height:100%;">
-                            <p style="margin: 0">
+                    <div class="col-md-6 about-text text-left">
+                        <h4 class="about-header">Yoga for Everyone</h4>
+                        <div class="about-section" >
+                            <p>
                                 Yoga unites the mind, body, and soul in a way that eases tension, reduces inflammation, and promotes health and well being.
                                 Regular practice will help you reach improve and perfect poses, correct posture and positioning, and improve
                                 your breathing and outlook on life.
@@ -55,40 +55,40 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img ng-src="{{vm.yogaPhotos[1]}}" class="contain-80 hero-image" style="margin:0 auto;max-height: 270px;">
+                        <img ng-src="{{vm.yogaPhotos[1]}}" class="contain-80 hero-image">
                     </div>
                 </div>
             </div>
             <div class="col-md-2"></div>
         </div>
-        <div class="row" style="margin-top:15px;">
+        <div class="row margin-top-15">
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <div class="row">
-                    <div class="col-md-6 about-text" style="text-align: left;vertical-align: middle;margin: 0;margin-bottom: 20px;">
-                        <h4 style="font-size:22px;color:rgb(77,77,77);font-weight:400;">Enhance Your Wellness</h4>
-                        <div style="font-size:14px;color:rgb(117,117,117);height:100%;">
-                            <p style="margin: 0">
+                    <div class="col-md-6 about-text pull-right text-left">
+                        <h4 class="about-header">Enhance Your Wellness</h4>
+                        <div class="about-section">
+                            <p>
                                 Yoga is a great way to improve your endurance in other physical activities. After a run, or heavy workout,
                                 yoga will help your body relax while stretching, strengthening, and lengthening the muscles you were just working on.
                             </p>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img ng-src="{{vm.yogaPhotos[2]}}" class="contain-80 hero-image" style="margin:0 auto;max-height: 270px;">
+                        <img ng-src="{{vm.yogaPhotos[2]}}" class="contain-80 hero-image">
                     </div>
                 </div>
             </div>
             <div class="col-md-2"></div>
         </div>
-        <div class="row" style="margin-top:15px;">
+        <div class="row margin-top-15">
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <div class="row">
-                    <div class="col-md-6 about-text pull-right" style="text-align: left;vertical-align: middle;margin: 0;margin-bottom: 20px;">
-                        <h4 style="font-size:22px;color:rgb(77,77,77);font-weight:400;">Calm Your Mind</h4>
-                        <div style="font-size:14px;color:rgb(117,117,117);height:100%;">
-                            <p style="margin: 0">
+                    <div class="col-md-6 about-text text-left">
+                        <h4 class="about-header">Calm Your Mind</h4>
+                        <div class="about-section">
+                            <p>
                                 Yoga not only helps improve your body, but also helps with mindfulness and meditation. It is important to take a break
                                 from daily life in order to focus on yourself and get clarity. Focusing on your breath during practice is key to staying
                                 in tune with your mind and body.
@@ -96,7 +96,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img ng-src="{{vm.yogaPhotos[3]}}" class="contain-80 hero-image" style="margin:0 auto;max-height: 270px;">
+                        <img ng-src="{{vm.yogaPhotos[3]}}" class="contain-80 hero-image">
                     </div>
                 </div>
             </div>
@@ -106,15 +106,15 @@
             <div class="col-md-2"></div>
                 <div class="col-md-8">
                     <div class="row">
-                        <div class="col-md-12" style="text-align:center;">
-                            <h4 style="font-size:23px;font-weight:600;color:rgb(27,27,27);text-transform: uppercase">Subscribe</h4>
+                        <div class="col-md-12">
+                            <h4 class="bold-header text-uppercase">Subscribe</h4>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12" style="margin-left:10%">
-                            <p style="text-align: center;">Sign up for weight loss tips,healthy recipes, and upcoming events.</p>
-                            <input style="padding-left:8px;padding-right:8px;padding-top:12px;padding-bottom:5px;border-width:1px;border-color:rgb(226,226,226);width:50%;border-type:solid;" type="text" ng-model="vm.newletterEmail" />
-                            <button type="button" class="btn btn-success" style="margin-bottom:5px;">SIGN UP</button>
+                        <div class="col-md-12">
+                            <p class="text-center">Sign up for weight loss tips,healthy recipes, and upcoming events.</p>
+                            <input id="subscribe-email" type="text" ng-model="vm.newletterEmail" />
+                            <button type="button" class="btn btn-success">SIGN UP</button>
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <h2 style="font-size:22px;text-align:left;padding-left:10px;text-transform:uppercase;font-weight: 700;border-bottom-width: 1px;border-bottom-style:solid;padding-bottom:10px;">Photo Gallery</h2>
+                <h2 class="section-header">Photo Gallery</h2>
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -137,29 +137,29 @@
                     <a class="arrow prev" href="" ng-click='vm.showPrev()'></a>
                     <a class="arrow next" href="" ng-click='vm.showNext()'></a>
                     <!-- extra navigation controls -->
-                    <ul class="nav">
-                        <li ng-repeat="photo in vm.galleryPhotos" ng-class="{'active':vm.isActive($index)}">
-                            <img src="{{photo.src}}" alt="{{photo.desc}}" title="{{photo.desc}}" ng-click="vm.showPhoto($index);" />
-                        </li>
-                    </ul>
+                    <!--<ul class="nav">-->
+                        <!--<li ng-repeat="photo in vm.galleryPhotos" ng-class="{'active':vm.isActive($index)}">-->
+                            <!--<img src="{{photo.src}}" alt="{{photo.desc}}" title="{{photo.desc}}" ng-click="vm.showPhoto($index);" />-->
+                        <!--</li>-->
+                    <!--</ul>-->
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <h2 style="font-size:22px;text-align:left;padding-left:10px;text-transform:uppercase;font-weight: 700;border-bottom-width: 1px;border-bottom-style:solid;padding-bottom:10px;">Contact Us</h2>
+                <h2 class="section-header">Contact Us</h2>
             </div>
             <div class="col-md-2"></div>
         </div>
         <div class="row" style="margin-bottom:20px;">
             <div class="col-md-12">
-                <h4 style="font-size:22px;color:rgb(27,27,27);font-weight:400;">Visit Our Location</h4>
+                <h4 class="paragraph-header margin-top-30">Visit Our Location</h4>
                 <p>Feel free to contact us with any questions or inquiries, or to learn more about our class schedules.</p>
-                <h4 style="font-size:22px;color:rgb(27,27,27);font-weight:400;margin-top:50px;">Centered Yoga & Dance</h4>
+                <h4 class="paragraph-header margin-top-30">Centered Yoga & Dance</h4>
                 <p>{{vm.companyAddress}}</p>
                 <p>{{vm.companyPhone}}</p>
-                <h4 style="font-size:22px;color:rgb(27,27,27);font-weight:400;margin-top:50px;">Hours</h4>
+                <h4 class="paragraph-header margin-top-30">Hours</h4>
                 <p>Monday - Friday: 10AM-8PM</p>
                 <p>Saturday: 8AM-10PM</p>
                 <p>Sunday: 12PM-5PM</p>
@@ -170,13 +170,7 @@
         <div style="text-align:left;margin:15px;">
             <div id="map"></div>
         </div>
-        <!--<div class="row">-->
-            <!--<div class="col-md-12">-->
-                <!--<div>-->
-                    <!--<div id="map" style="height:250px;"></div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
+
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">

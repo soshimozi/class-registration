@@ -2,7 +2,7 @@
 
 export default class {
 
-    constructor() {
+    constructor($interval) {
         this.yogaPhotos = [require('../images/yoga-1.jpg'), require('../images/yoga-2.jpg'), require('../images/yoga-3.jpg'), require('../images/yoga-4.jpg')];
 
         this.companyAddress = "32999 Yucaipa Boulevard, Suite 118, Yucaipa, California 92399, United States";
@@ -23,6 +23,10 @@ export default class {
 
         // initial image index
         this._Index = 0;
+
+        $interval(() => {
+            this.showNext()
+        }, 10000, 0);
 
     }
 
