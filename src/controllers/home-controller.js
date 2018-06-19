@@ -33,12 +33,12 @@ export default class {
 
     // show prev image
     showPrev () {
-        this._Index = (this._Index > 0) ? --this._Index : this.photos.length - 1;
+        this._Index = (this._Index > 0) ? --this._Index : this.galleryPhotos.length - 1;
     }
 
     // show next image
     showNext() {
-        this._Index = (this._Index < this.photos.length - 1) ? ++this._Index : 0;
+        this._Index = (this._Index < this.galleryPhotos.length - 1) ? ++this._Index : 0;
     }
 
     // show a certain image

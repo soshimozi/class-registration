@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <!-- TODO: put this into a database and load it from backend -->
                 <span>{{vm.companyAddress}} | {{vm.companyPhone}}</span>
-                <hr/>
+                <hr style="border-top: 1px solid #555;"/>
             </div>
         </div>
 
@@ -30,7 +30,7 @@
         </div>
         <div class="row" style="margin-bottom:25px;">
             <div class="col-md-12">
-                <button type="button" class="btn btn-success">JOIN A CLASS</button>
+                <a ui-sref="stateOfCurrentPage" class="btn btn-success">JOIN A CLASS</a>
             </div>
         </div>
         <div class="row">
@@ -44,10 +44,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <div class="row">
-                    <div class="col-md-6">
-                        <img ng-src="{{vm.yogaPhotos[1]}}" class="contain-80 hero-image" style="margin:0 auto;max-height: 270px;">
-                    </div>
-                    <div class="col-md-6 about-text" style="text-align: left;vertical-align: middle;margin: 0;margin-bottom: 20px;">
+                    <div class="col-md-6 about-text pull-right" style="text-align: left;vertical-align: middle;margin: 0;margin-bottom: 20px;">
                         <h4 style="font-size:22px;color:rgb(77,77,77);font-weight:400;">Yoga for Everyone</h4>
                         <div style="font-size:14px;color:rgb(117,117,117);height:100%;">
                             <p style="margin: 0">
@@ -56,6 +53,9 @@
                                 your breathing and outlook on life.
                             </p>
                         </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img ng-src="{{vm.yogaPhotos[1]}}" class="contain-80 hero-image" style="margin:0 auto;max-height: 270px;">
                     </div>
                 </div>
             </div>
@@ -85,10 +85,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <div class="row">
-                    <div class="col-md-6">
-                        <img ng-src="{{vm.yogaPhotos[3]}}" class="contain-80 hero-image" style="margin:0 auto;max-height: 270px;">
-                    </div>
-                    <div class="col-md-6 about-text" style="text-align: left;vertical-align: middle;margin: 0;margin-bottom: 20px;">
+                    <div class="col-md-6 about-text pull-right" style="text-align: left;vertical-align: middle;margin: 0;margin-bottom: 20px;">
                         <h4 style="font-size:22px;color:rgb(77,77,77);font-weight:400;">Calm Your Mind</h4>
                         <div style="font-size:14px;color:rgb(117,117,117);height:100%;">
                             <p style="margin: 0">
@@ -97,6 +94,9 @@
                                 in tune with your mind and body.
                             </p>
                         </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img ng-src="{{vm.yogaPhotos[3]}}" class="contain-80 hero-image" style="margin:0 auto;max-height: 270px;">
                     </div>
                 </div>
             </div>
@@ -134,8 +134,8 @@
                     <!-- enumerate all photos -->
                     <img ng-repeat="photo in vm.galleryPhotos" class="slide" ng-swipe-right="vm.showPrev()" ng-swipe-left="vm.showNext()" ng-show="vm.isActive($index)" ng-src="{{photo.src}}" />
                     <!-- prev / next controls -->
-                    <a class="arrow prev" href="#" ng-click="vm.showPrev()"></a>
-                    <a class="arrow next" href="#" ng-click="vm.showNext()"></a>
+                    <a class="arrow prev" href="" ng-click='vm.showPrev()'></a>
+                    <a class="arrow next" href="" ng-click='vm.showNext()'></a>
                     <!-- extra navigation controls -->
                     <ul class="nav">
                         <li ng-repeat="photo in vm.galleryPhotos" ng-class="{'active':vm.isActive($index)}">
