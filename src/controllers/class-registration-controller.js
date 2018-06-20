@@ -24,8 +24,8 @@ export default class {
                 height: 450,
                 editable: false,
                 header: {
-                    left:'title',
-                    center:'',
+                    left:'',
+                    center:'title',
                     right: 'today prev,next'
                 },
                 eventClick: (event) => {

@@ -93,11 +93,13 @@
         <form name="registrationForm" novalidate ng-submit="vm.submit()">
         <div ng-if="!vm.showCalendar" class="fade faded-row">
             <div class="col-md-12">
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="segment segment-yellow"><h1 style="font-size: 18px; font-family: sans-serif;">Registration</h1></div>
                     </div>
                 </div>
+
                 <div class="row" style="padding:10px;">
                     <div class="col-md-6 q">
                         <div class="form-group" ng-class="{ 'has-error' : registrationForm.firstName.$invalid && !registrationForm.firstName.$pristine }">
@@ -133,9 +135,32 @@
                 </div>
 
                 <div class="row">
+                    <div class="col-md-6 q">
+                        <input type="checkbox" ng-model="vm.registrarIsNotStudent"> I am registering for someone else
+                    </div>
+                </div>
+
+                <div class="row" style="padding:10px;" ng-if="vm.registrarIsNotStudent">
+                    <div class="col-md-6 q">
+                        <div class="form-group" ng-class="{ 'has-error' : registrationForm.firstName.$invalid && !registrationForm.firstName.$pristine }">
+                            <label for="sudent-first-name">Student's First Name*</label>
+                            <div><input name="student_firstName" id="sudent-first-name" class="text_field" ng-model="vm.studentFirstName" required></div>
+                            <p ng-show="registrationForm.student_firstName.$invalid && !registrationForm.student_firstName.$pristine" class="help-block">Please enter the student's first name.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 q">
+                        <div class="form-group" ng-class="{ 'has-error' : registrationForm.lastName.$invalid && !registrationForm.lastName.$pristine }">
+                            <label for="student-last-name">Student's Last Name*</label>
+                            <div><input name="student_lastName" id="student-last-name" class="text_field" ng-model="vm.studentLastName" required></div>
+                            <p ng-show="registrationForm.student_lastName.$invalid && !registrationForm.student_lastName.$pristine" class="help-block">Please enter the student's last name.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="col-md-12 q">
                         <p>Keep in mind that space is limited for classes and registering will fill a slot.
-                            Please be courteous and show up on time prepared for the class.
+                            Please be courteous and show up on time and begit  prepared for the class.
                             The class description will include any needed materials.
                         </p>
                         <button class="btn btn-primary" ng-disabled="registrationForm.$invalid">Register</button>
