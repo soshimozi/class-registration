@@ -5,22 +5,14 @@
                 <p style="margin: 0;color:rgb(119,119,119);">Join A Class Today!</p>
             </div>
         </div>
+
         <div class="row center-text margin-bottom-25">
             <div class="col-md-12">
                 <button class="btn btn-success" ng-click="vm.gotoClassRegistration()">JOIN A CLASS</button>
             </div>
         </div>
 
-        <div class="row" style="height:18px; margin-top:10px;text-align:left;">
-            <div class="col-md-12">
-                <ol class="ab-nav breadcrumb">
-                    <li ng-repeat="breadcrumb in breadcrumbs.get() track by breadcrumb.path" ng-class="{ active: $last }">
-                        <a ng-if="!$last" ng-href="{{ breadcrumb.path }}" ng-bind="breadcrumb.label" class="margin-right-xs"></a>
-                        <span ng-if="$last" ng-bind="breadcrumb.label"></span>
-                    </li>
-                </ol>
-            </div>
-        </div>
+        <div ng-include="'breadcrumbs.html'"></div>
 
         <div class="row">
             <div class="col-md-12">
@@ -114,11 +106,11 @@
                     <a class="arrow prev" href="" ng-click='vm.showPrev()'></a>
                     <a class="arrow next" href="" ng-click='vm.showNext()'></a>
                     <!-- extra navigation controls -->
-                    <!--<ul class="nav">-->
-                        <!--<li ng-repeat="photo in vm.galleryPhotos" ng-class="{'active':vm.isActive($index)}">-->
-                            <!--<img src="{{photo.src}}" alt="{{photo.desc}}" title="{{photo.desc}}" ng-click="vm.showPhoto($index);" />-->
-                        <!--</li>-->
-                    <!--</ul>-->
+                    <ul class="nav">
+                        <li ng-repeat="photo in vm.galleryPhotos" ng-class="{'active':vm.isActive($index)}">
+                            <img src="{{photo.image}}" alt="{{photo.desc}}" title="{{photo.desc}}" ng-click="vm.showPhoto($index);" />
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -132,8 +124,8 @@
                 <h4 class="paragraph-header margin-top-30">Visit Our Location</h4>
                 <p>Feel free to contact us with any questions or inquiries, or to learn more about our class schedules.</p>
                 <h4 class="paragraph-header margin-top-30">Centered Yoga & Dance</h4>
-                <p>{{vm.companyAddress}}</p>
-                <p>{{vm.companyPhone}}</p>
+                <p>{{companyAddress}}</p>
+                <p>{{companyPhone}}</p>
                 <h4 class="paragraph-header margin-top-30">Hours</h4>
                 <p>Monday - Friday: 10AM-8PM</p>
                 <p>Saturday: 8AM-10PM</p>

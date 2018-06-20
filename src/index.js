@@ -35,7 +35,7 @@ app.controller('ClassRegistrationController', ClassRegistrationController);
 app.config(require('./routes'));
 
 
-app.run(($browser, $rootScope) => {
+app.run(($browser, $rootScope, $templateCache) => {
     $browser.baseHref = function () { return "/" };
 
     $rootScope.companyAddress = "32999 Yucaipa Boulevard, Suite 118, Yucaipa, California 92399, United States";
@@ -49,5 +49,10 @@ app.run(($browser, $rootScope) => {
         console.log('$routeChangeStart', $event, next, current)
         // ... you could trigger something here ...
     });
+
+    //$rootScope.breadcrumbsTemplate = require('./templates/breadcrumbs.html');
+
+    //var url = './templates/breadcrumbs.html';
+    $templateCache.put('breadcrumbs.html', require('./templates/breadcrumbs.html'));
 
 });
