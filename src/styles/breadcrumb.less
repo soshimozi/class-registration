@@ -1,0 +1,28 @@
+@breadcrumb-active-color: rgb(7,7,7);
+@breadcrumb-padding-vertical: 5px;
+@breadcrumb-padding-horizontal: 10px;
+@breadcrumb-bg: #f5f5f5;
+@breadcrumb-separator: "|";
+@breadcrumb-color: rgb(7,7,7);
+
+.bc {
+  padding: @breadcrumb-padding-vertical @breadcrumb-padding-horizontal;
+  margin-bottom: 15px;
+  list-style: none;
+  background-color: @breadcrumb-bg;
+  border-radius: @border-radius-base;
+
+  > li {
+    display: inline-block;
+
+    + li:before {
+      content: "@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
+      padding: 0 5px;
+      color: @breadcrumb-color;
+    }
+  }
+
+  > .active {
+    color: @breadcrumb-active-color;
+  }
+}

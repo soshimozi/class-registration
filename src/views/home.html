@@ -1,61 +1,32 @@
+    <div class="container">
 
-    <!--<div class="container"  style="text-align: center;">-->
-        <!--<div class="row" style="padding-bottom:15px;padding-top:15px;line-height: 1.5;">-->
-            <!--<div class="col-md-12">-->
-                <!--&lt;!&ndash; TODO: put this into a database and load it from backend &ndash;&gt;-->
-                <!--<span>{{vm.companyAddress}} | {{vm.companyPhone}}</span>-->
-                <!--<hr style="border-top: 1px solid #555;"/>-->
-            <!--</div>-->
-        <!--</div>-->
-
-        <!--<div class="row">-->
-            <!--<div class="col-md-12">-->
-                <!--<h3 class="company-header" >{{vm.companyName}}</h3>-->
-                <!--<h1 class="company-tag-line">{{vm.companyTagLine}}</h1>-->
-            <!--</div>-->
-
-        <!--</div>-->
-        <!--<div class="row margin-top-15">-->
-            <!--<div class="col-md-12">-->
-                <!--<img ng-src="{{vm.yogaPhotos[0]}}" class="contain-50 hero-image" style="margin:0 auto;max-height:500px;"/>-->
-            <!--</div>-->
-        <!--</div>-->
-
-        <!--&lt;!&ndash;<ol class="ab-nav breadcrumb">&ndash;&gt;-->
-            <!--&lt;!&ndash;<li ng-repeat="breadcrumb in breadcrumbs.get() track by breadcrumb.path" ng-class="{ active: $last }">&ndash;&gt;-->
-                <!--&lt;!&ndash;<a ng-if="!$last" ng-href="#{{ breadcrumb.path }}" ng-bind="breadcrumb.label" class="margin-right-xs"></a>&ndash;&gt;-->
-                <!--&lt;!&ndash;<span ng-if="$last" ng-bind="breadcrumb.label"></span>&ndash;&gt;-->
-            <!--&lt;!&ndash;</li>&ndash;&gt;-->
-        <!--&lt;!&ndash;</ol>&ndash;&gt;-->
-    <!--</div>-->
-
-
-    <div class="fluid-container" style="text-align: center;">
-
-        <!--<div class="row" style="height:18px; margin-top:10px;text-align:left;">-->
-            <!--<div class="col-md-2"></div>-->
-            <!--<div class="col-md-8">-->
-                <!--<ol class="ab-nav breadcrumb">-->
-                    <!--<li ng-repeat="breadcrumb in vm.breadcrumbs.get() track by breadcrumb.path" ng-class="{ active: $last }">-->
-                        <!--<a ng-if="!$last" ng-href="#{{ breadcrumb.path }}" ng-bind="breadcrumb.label" class="margin-right-xs"></a>-->
-                        <!--<span ng-if="$last" ng-bind="breadcrumb.label"></span>-->
-                    <!--</li>-->
-                <!--</ol>-->
-            <!--</div>-->
-            <!--<div class="col-md-2"></div>-->
-        <!--</div>-->
-
-
-        <div class="row" style="margin-top:25px;margin-bottom:25px;">
+        <div class="row margin-top-25 margin-bottom-25 center-text">
             <div class="col-md-12">
                 <p style="margin: 0;color:rgb(119,119,119);">Join A Class Today!</p>
             </div>
         </div>
-        <div class="row" style="margin-bottom:25px;">
+        <div class="row center-text margin-bottom-25">
             <div class="col-md-12">
                 <button class="btn btn-success" ng-click="vm.gotoClassRegistration()">JOIN A CLASS</button>
             </div>
         </div>
+
+        <div class="row" style="height:18px; margin-top:10px;text-align:left;">
+            <div class="col-md-12">
+                <ol class="ab-nav breadcrumb">
+                    <li ng-repeat="breadcrumb in breadcrumbs.get() track by breadcrumb.path" ng-class="{ active: $last }">
+                        <a ng-if="!$last" ng-href="{{ breadcrumb.path }}" ng-bind="breadcrumb.label" class="margin-right-xs"></a>
+                        <span ng-if="$last" ng-bind="breadcrumb.label"></span>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container center-text">
+
+
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
@@ -166,16 +137,6 @@
                         <!--</li>-->
                     <!--</ul>-->
                 </div>
-
-                <!--<div uib-carousel active="active" interval="5000" no-wrap="false">-->
-                    <!--<div uib-slide ng-repeat="slide in vm.galleryPhotos track by slide.id" index="slide.id">-->
-                        <!--<img ng-src="{{slide.image}}" style="margin:auto;">-->
-                        <!--<div class="carousel-caption">-->
-                            <!--<h4>Slide {{slide.id}}</h4>-->
-                            <!--<p>{{slide.text}}</p>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
             </div>
         </div>
         <div class="row">
@@ -203,22 +164,6 @@
         <div style="text-align:left;margin:15px;">
             <div id="map"></div>
         </div>
-
-        <!--<div class="row">-->
-            <!--<div class="col-md-2"></div>-->
-            <!--<div class="col-md-8">-->
-                <!--<div style="padding-left:10px;border-bottom-width: 1px;border-bottom-style:solid;padding-bottom:10px;width:100%;">&nbsp;</div>-->
-            <!--</div>-->
-            <!--<div class="col-md-2"></div>-->
-        <!--</div>-->
-        <!--<div class="row">-->
-            <!--<div class="col-md-2"></div>-->
-            <!--<div class="col-md-8" style="color:rgb(187,187,187);text-align:left;margin-top:10px;margin-bottom:10px;">-->
-                <!--Copyright &copy;2018 Centered Yoga & Dance - All Rights Reserved.-->
-            <!--</div>-->
-            <!--<div class="col-md-2"></div>-->
-
-        <!--</div>-->
 
     </div>
 
