@@ -150,6 +150,10 @@ angular-animate@1.6.6:
   version "1.6.6"
   resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.6.6.tgz#6925647b141a040d241bf125040f1a150fcd8a70"
 
+angular-breadcrumbs@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/angular-breadcrumbs/-/angular-breadcrumbs-0.5.3.tgz#6cfad694ee8734e8ddd9e161a03f14ecd716d309"
+
 angular-input-masks@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/angular-input-masks/-/angular-input-masks-4.2.0.tgz#a821ad7258cff3ebbddf94841b780147d0ee732d"

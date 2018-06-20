@@ -1,21 +1,20 @@
-<div>
 
     <div class="container">
 
-        <div class="row">
+        <!--<div class="row margin-top-15" style="text-align: center;">-->
+            <!--<div class="col-md-12">-->
+                <!--<img ng-src="{{vm.headerImage}}" class="contain-50 hero-image" style="margin:0 auto;max-height:500px;" ng-click="vm.gotoHome()"/>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="row section margin-top-15">
             <div class="col-md-12">
-                <div class="dialog-header"></div>
+                <div class="segment segment-yellow"><h1 style="font-size: 18px; font-family: sans-serif;">Class Information</h1></div>
             </div>
         </div>
 
-        <div class="section">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="segment segment-yellow"><h1 style="font-size: 18px; font-family: sans-serif;">Class Information</h1></div>
-                </div>
-            </div>
-
-            <div class="fade faded-row" ng-if="vm.selectedClass" style="text-align: center">
+        <div class="row margin-top-15 fade faded-row" ng-if="!vm.showCalendar" style="text-align: center">
+            <div class="col-md-12">
 
                 <div class="row">
                     <div class="col-md-12" style="text-align: center">
@@ -59,147 +58,83 @@
                     </div>
                 </div>
 
-            </div>
-
-            <div class="row" ng-if="!vm.showCalendar">
-                <div class="col-md-12" style="text-align:center;margin-top:20px;margin-bottom:10px;">
-                    <button class="btn bt-primary" type="button" ng-click="vm.showCalendar = !vm.showCalendar">Browse Classes</button>
-                </div>
-            </div>
-            <!--<div class="row fade faded-row" ng-if="vm.selectedClass">-->
-                <!--<div class="col-md-12">-->
-                    <!--<div class="panel panel-registration" id="class-info-panel">-->
-                        <!--<div class="panel-heading">{{vm.selectedClass.name}}</div>-->
-                        <!--<div class="row">-->
-                            <!--<div class="col-md-6">-->
-                                <!--<div>-->
-                                    <!--<div class="class-label">Instructor</div>-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                    <!--Put Profile Picture Here!-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                    <!--{{vm.selectedClass.instructor.name}}-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="col-md-6">-->
-                                <!--<div>-->
-                                    <!--<div class="class-label">Class Description</div>-->
-                                <!--</div>-->
-                                <!--<div ng-bind-html="vm.selectedClass.description">-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="row">-->
-                            <!--<div class="col-md-6">-->
-                                <!--<div>-->
-                                    <!--<div class="class-label">Class Start</div>-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                    <!--{{vm.selectedClass.start.format("dddd, MMMM Do YYYY, h:mm a")}}-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="col-md-6">-->
-                                <!--<div>-->
-                                    <!--<div class="class-label">Duration</div>-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                    <!--{{vm.selectedClass.duration}} hrs-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="row">-->
-                            <!--<div class="col-md-12">-->
-                                <!--<button class="btn btn-success" ng-click="vm.closeModal()">Join This Class</button>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <div class="row fade faded-row" ng-if="vm.showCalendar">
-                <div class="col-md-12">
-                    <div class="btn-toolbar">
-                        <p class="pull-right lead">Please Select a Class</p>
-                        <div class="btn-group">
-                            <button class="btn btn-registration" ng-click="vm.changeView('month', 'classCalendar')">Month</button>
-                            <button class="btn btn-registration" ng-click="vm.changeView('listWeek', 'classCalendar')">Week</button>
-                            <button class="btn btn-registration" ng-click="vm.changeView('listDay', 'classCalendar')">Day</button>
-                        </div>
+                <div class="row" ng-if="!vm.showCalendar">
+                    <div class="col-md-12" style="text-align:center;margin-top:20px;margin-bottom:10px;">
+                        <button class="btn bt-primary" type="button" ng-click="vm.showCalendar = !vm.showCalendar">Browse Classes</button>
                     </div>
-                    <div id="calendar" ui-calendar="vm.uiConfig.calendar" ng-model="vm.eventSources" calendar="classCalendar" class="calendar"></div>
                 </div>
+
             </div>
         </div>
 
-        <div ng-if="vm.selectedClass" class="fade faded-row">
-            <form name="registrationForm" ng-submit="vm.onSubmit(registrationForm.$valid)" novalidate>
-
-                <div class="section">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="segment segment-yellow"><h1 style="font-size: 18px; font-family: sans-serif;">Student Information</h1></div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 q">
-                            <div class="form-group" ng-class="{ 'has-error' : registrationForm.firstName.$invalid && !registrationForm.firstName.$pristine }">
-                                <label for="first-name">First Name*</label>
-                                <div><input name="firstName" id="first-name" class="text_field" ng-model="vm.firstName" required></div>
-                                <p ng-show="registrationForm.firstName.$invalid && !registrationForm.firstName.$pristine" class="help-block">Please enter your first name.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6 q">
-                            <div class="form-group" ng-class="{ 'has-error' : registrationForm.lastName.$invalid && !registrationForm.lastName.$pristine }">
-                                <label for="last-name">Last Name*</label>
-                                <div><input name="lastName" id="last-name" class="text_field" ng-model="vm.lastName" required></div>
-                                <p ng-show="registrationForm.lastName.$invalid && !registrationForm.lastName.$pristine" class="help-block">Please enter your last name.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 q">
-                            <div class="form-group" ng-class="{ 'has-error' : registrationForm.email.$invalid && !registrationForm.email.$pristine }">
-                                <label for="email">Email*</label>
-                                <div><input name="email" type="email" id="email" class="text_field" ng-model="vm.email" style="width:100%;" required></div>
-                                <p ng-show="registrationForm.email.$invalid && !registrationForm.email.$pristine" class="help-block">Please enter a valid email address.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6 q">
-                            <div class="form-group" ng-class="{ 'has-error' : registrationForm.phoneNumber.$invalid && !registrationForm.phoneNumber.$pristine }">
-                                <label for="phone-number">Phone Number</label>
-                                <div><input name="phoneNumber" id="phone-number" class="text_field" ng-model="vm.phone" ui-us-phone-number-mask></div>
-                                <p ng-show="registrationForm.phoneNumber.$invalid && !registrationForm.phoneNumber.$pristine" class="help-block">Please enter a valid phone number.</p>
-                            </div>
-                        </div>
+        <div class="row fade faded-row" ng-if="vm.showCalendar">
+            <div class="col-md-12" style="padding:10px;margin:10px;">
+                <div class="btn-toolbar">
+                    <p class="pull-right lead">Please Select a Class</p>
+                    <div class="btn-group">
+                        <button class="btn btn-registration" ng-click="vm.changeView('month', 'classCalendar')">Month</button>
+                        <button class="btn btn-registration" ng-click="vm.changeView('listWeek', 'classCalendar')">Week</button>
+                        <button class="btn btn-registration" ng-click="vm.changeView('listDay', 'classCalendar')">Day</button>
                     </div>
                 </div>
-
-                <div class="section">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="segment segment-yellow"><h1 style="font-size: 18px; font-family: sans-serif;">Registration</h1></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 q">
-                            <p>Keep in mind that space is limited for classes and registering will fill a slot.
-                                Please be courteous and show up on time prepared for the class.
-                                The class description will include any needed materials.
-                            </p>
-                            <button class="btn btn-primary" ng-disabled="registrationForm.$invalid">Register</button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 q">
-                            <input type="checkbox"> Receive Email Alerts
-                        </div>
-                    </div>
-
-                </div>
-
-            </form>
+                <div id="calendar" ui-calendar="vm.uiConfig.calendar" ng-model="vm.eventSources" calendar="classCalendar" class="calendar"></div>
+            </div>
         </div>
+
+        <form name="registrationForm" novalidate ng-submit="vm.submit()">
+        <div ng-if="!vm.showCalendar" class="fade faded-row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="segment segment-yellow"><h1 style="font-size: 18px; font-family: sans-serif;">Registration</h1></div>
+                    </div>
+                </div>
+                <div class="row" style="padding:10px;">
+                    <div class="col-md-6 q">
+                        <div class="form-group" ng-class="{ 'has-error' : registrationForm.firstName.$invalid && !registrationForm.firstName.$pristine }">
+                            <label for="first-name">First Name*</label>
+                            <div><input name="firstName" id="first-name" class="text_field" ng-model="vm.firstName" required></div>
+                            <p ng-show="registrationForm.firstName.$invalid && !registrationForm.firstName.$pristine" class="help-block">Please enter your first name.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 q">
+                        <div class="form-group" ng-class="{ 'has-error' : registrationForm.lastName.$invalid && !registrationForm.lastName.$pristine }">
+                            <label for="last-name">Last Name*</label>
+                            <div><input name="lastName" id="last-name" class="text_field" ng-model="vm.lastName" required></div>
+                            <p ng-show="registrationForm.lastName.$invalid && !registrationForm.lastName.$pristine" class="help-block">Please enter your last name.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="padding:10px;">
+                    <div class="col-md-6 q">
+                        <div class="form-group" ng-class="{ 'has-error' : registrationForm.email.$invalid && !registrationForm.email.$pristine }">
+                            <label for="email">Email*</label>
+                            <div><input name="email" type="email" id="email" class="text_field" ng-model="vm.email" style="width:100%;" required></div>
+                            <p ng-show="registrationForm.email.$invalid && !registrationForm.email.$pristine" class="help-block">Please enter a valid email address.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 q">
+                        <div class="form-group" ng-class="{ 'has-error' : registrationForm.phoneNumber.$invalid && !registrationForm.phoneNumber.$pristine }">
+                            <label for="phone-number">Phone Number</label>
+                            <div><input name="phoneNumber" id="phone-number" class="text_field" ng-model="vm.phone" ui-us-phone-number-mask></div>
+                            <p ng-show="registrationForm.phoneNumber.$invalid && !registrationForm.phoneNumber.$pristine" class="help-block">Please enter a valid phone number.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 q">
+                        <p>Keep in mind that space is limited for classes and registering will fill a slot.
+                            Please be courteous and show up on time prepared for the class.
+                            The class description will include any needed materials.
+                        </p>
+                        <button class="btn btn-primary" ng-disabled="registrationForm.$invalid">Register</button>
+                        <span style="margin-left:20px;"><input type="checkbox"> Receive Email Alerts</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </form>
     </div>
-</div>

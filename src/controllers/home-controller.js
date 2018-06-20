@@ -2,32 +2,41 @@
 
 export default class {
 
-    constructor($interval) {
-        this.yogaPhotos = [require('../images/yoga-1.jpg'), require('../images/yoga-2.jpg'), require('../images/yoga-3.jpg'), require('../images/yoga-4.jpg')];
+    constructor($interval, $location, $rootScope, breadcrumbs) {
 
-        this.companyAddress = "32999 Yucaipa Boulevard, Suite 118, Yucaipa, California 92399, United States";
-        this.companyPhone = "(909) 283-8046";
-        this.companyName = "CENTERED YOGA & DANCE";
-        this.companyTagLine = "UNITING MIND, BODY, AND SOUL";
+        this.yogaPhotos = [
+            require('../images/yoga-1.jpg'),
+            require('../images/yoga-2.jpg'),
+            require('../images/yoga-3.jpg'),
+            require('../images/yoga-4.jpg')
+        ];
 
         this._initializeMap();
 
         this.galleryPhotos = [
-            {src: 'http://farm9.staticflickr.com/8042/7918423710_e6dd168d7c_b.jpg', desc: 'Image 01'},
-            {src: 'http://farm9.staticflickr.com/8449/7918424278_4835c85e7a_b.jpg', desc: 'Image 02'},
-            {src: 'http://farm9.staticflickr.com/8457/7918424412_bb641455c7_b.jpg', desc: 'Image 03'},
-            {src: 'http://farm9.staticflickr.com/8179/7918424842_c79f7e345c_b.jpg', desc: 'Image 04'},
-            {src: 'http://farm9.staticflickr.com/8315/7918425138_b739f0df53_b.jpg', desc: 'Image 05'},
-            {src: 'http://farm9.staticflickr.com/8461/7918425364_fe6753aa75_b.jpg', desc: 'Image 06'}
+            {image: require('../images/carousel-image-1.jpg'), desc: 'Image 01', id: 0},
+            {image: require('../images/carousel-image-2.jpg'), desc: 'Image 02', id: 1},
+            {image: require('../images/carousel-image-3.jpg'), desc: 'Image 03', id: 2}
         ];
 
         // initial image index
         this._Index = 0;
 
+        this.$location = $location;
+
         $interval(() => {
             this.showNext()
         }, 10000, 0);
 
+        this.breadcrumbs = breadcrumbs;
+        $rootScope.breadcrumbs = breadcrumbs;
+
+        console.log('breadcrumbs:', breadcrumbs);
+
+    }
+
+    gotoClassRegistration() {
+        this.$location.path('class-registration');
     }
 
     // if a current image is the same as requested image

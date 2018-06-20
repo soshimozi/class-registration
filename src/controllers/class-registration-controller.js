@@ -1,6 +1,6 @@
 export default class {
 
-    constructor($scope, $uibModal, $q, $sce, $compile, uiCalendarConfig) {
+    constructor($scope, $uibModal, $q, $sce, $compile, $location, uiCalendarConfig, $rootScope, breadcrumbs) {
 
         this.$uibModal = $uibModal;
         this.$scope = $scope;
@@ -10,11 +10,14 @@ export default class {
         this.uiCalendarConfig = uiCalendarConfig;
 
         this.classes = this._loadEvents();
-        console.log('classes', this.classes);
 
         this.eventSources = [this.classes];
 
         this.showCalendar = true;
+
+        this.$location = $location;
+
+        $rootScope.breadcrumbs = breadcrumbs;
 
         this.uiConfig = {
             calendar: {
@@ -49,11 +52,15 @@ export default class {
 
     }
 
+    gotoHome() {
+        this.$location.path('home');
+    }
+
     changeView(view, calendar) {
         this.uiCalendarConfig.calendars[calendar].fullCalendar('changeView',view);
     }
 
-    onSubmit() {
+    submit() {
 
         var ID = function () {
             // Math.random should be unique because of its seeding algorithm.
@@ -73,9 +80,6 @@ export default class {
             controller: class {
                 constructor($scope, $uibModalInstance, className, registrationNumber) {
 
-                    console.log('scope', $scope);
-                    // console.log('number', registrationNumber);
-                    //
                     $scope.className = className;
                     $scope.registrationNumber = registrationNumber;
 
@@ -92,6 +96,8 @@ export default class {
                     return `${this.selectedClass.classId}${ID()}`;
                 }
             }
+        }).result.then(() => {
+            this.$location.path('');
         });
 
     }

@@ -2,7 +2,9 @@
     <h3 class="modal-title" id="modal-title">Thank You For Registering!</h3>
 </div>
 <div class="modal-body" id="modal-body">
-    <p>Thank you for registering for {{className}} today!  Your registration number is {{registrationNumber}}.  Please refer to that number when inquiring about your registration. </p>
+    <p>Thank you for registering for {{className}} today!</p>
+    <p>Your registration number is <span style="font-weight:bold">{{registrationNumber}}</span>.</p>
+    <p>Please refer to that number when inquiring about your registration. </p>
 </div>
 <div class="modal-footer">
     <button ng-click="close()">Close</button>
