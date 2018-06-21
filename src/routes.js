@@ -1,4 +1,5 @@
-const routes = ($routeProvider, $locationProvider) => {
+const routes = ($routeProvider) => {
+
     $routeProvider
         .when('/', {
             template: require('./views/home.html'),
@@ -12,9 +13,27 @@ const routes = ($routeProvider, $locationProvider) => {
             controllerAs: 'vm',
             label: 'Registration'
         })
+        .when('/profile', {
+            template: require('./views/profile.html'),
+            controller: 'ProfileController',
+            controllerAs: 'vm',
+            label: 'Profile'
+        })
+        .when('/admin', {
+            template: require('./views/admin.html'),
+            controller: 'AdminController',
+            controllerAs: 'vm',
+            label: 'Administration'
+        })
+        .when('/login', {
+            template: require('./views/login.html'),
+            controller: 'LoginController',
+            controllerAs: 'vm',
+            label: 'Login'
+        })
         .otherwise({ redirectTo: '/' });
 
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
 };
 
 module.exports = routes;
