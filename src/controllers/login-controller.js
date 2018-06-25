@@ -1,5 +1,10 @@
 export default class {
-    constructor() {
+    constructor($rootScope, $location, authService) {
 
+        authService.login();
+
+        // TODO do actual login here
+        $rootScope.scopes = ['admin', 'profile'];
+        $location.path('');
     }
 }

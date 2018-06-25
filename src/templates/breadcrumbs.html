@@ -1,3 +1,9 @@
+<div class="row">
+    <div>
+        <button ng-if="!isAuthenticated()" class="pull-right btn btn-primary" style="margin-right: 15px;" ng-click="login()">Login Or Signup</button>
+        <button ng-if="isAuthenticated()" class="pull-right btn btn-danger" style="margin-right: 15px;" ng-click="logout()">Logout</button>
+    </div>
+</div>
 <div class="row" style="margin-top:10px;text-align:left;">
     <div class="col-md-12">
         <ol class="ab-nav breadcrumb">

@@ -19,58 +19,20 @@
                 <h2 class="section-header">About Us</h2>
             </div>
         </div>
-        <div class="row margin-top-15">
+        <!-- TODO: add a repeater for this content -->
+        <div class="row margin-top-15" ng-repeat="contentBlock in vm.contentBlocks track by $index">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-6 about-text text-left">
-                        <h4 class="about-header">Yoga for Everyone</h4>
+                    <div class="col-md-6 about-text text-left" ng-class="{'pull-right': !($index % 2)}">
+                        <h4 class="about-header">{{contentBlock.header}}</h4>
                         <div class="about-section" >
                             <p>
-                                Yoga unites the mind, body, and soul in a way that eases tension, reduces inflammation, and promotes health and well being.
-                                Regular practice will help you reach improve and perfect poses, correct posture and positioning, and improve
-                                your breathing and outlook on life.
+                                {{contentBlock.body}}
                             </p>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img ng-src="{{vm.yogaPhotos[1]}}" class="contain-80 hero-image">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row margin-top-15">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-6 about-text pull-right text-left">
-                        <h4 class="about-header">Enhance Your Wellness</h4>
-                        <div class="about-section">
-                            <p>
-                                Yoga is a great way to improve your endurance in other physical activities. After a run, or heavy workout,
-                                yoga will help your body relax while stretching, strengthening, and lengthening the muscles you were just working on.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <img ng-src="{{vm.yogaPhotos[2]}}" class="contain-80 hero-image">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row margin-top-15">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-6 about-text text-left">
-                        <h4 class="about-header">Calm Your Mind</h4>
-                        <div class="about-section">
-                            <p>
-                                Yoga not only helps improve your body, but also helps with mindfulness and meditation. It is important to take a break
-                                from daily life in order to focus on yourself and get clarity. Focusing on your breath during practice is key to staying
-                                in tune with your mind and body.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <img ng-src="{{vm.yogaPhotos[3]}}" class="contain-80 hero-image">
+                        <img ng-src="{{contentBlock.img}}" class="contain-80 hero-image">
                     </div>
                 </div>
             </div>
@@ -108,7 +70,7 @@
                     <!-- extra navigation controls -->
                     <ul class="nav">
                         <li ng-repeat="photo in vm.galleryPhotos" ng-class="{'active':vm.isActive($index)}">
-                            <img src="{{photo.image}}" alt="{{photo.desc}}" title="{{photo.desc}}" ng-click="vm.showPhoto($index);" />
+                            <img ng-src="{{photo.image}}" alt="{{photo.desc}}" title="{{photo.desc}}" ng-click="vm.showPhoto($index);" />
                         </li>
                     </ul>
                 </div>

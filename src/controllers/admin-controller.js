@@ -1,5 +1,9 @@
 export default class {
-    constructor() {
+    constructor(authService) {
+        this.authService = authService;
+    }
+
+    loginAdmin() {
 
     }
 }

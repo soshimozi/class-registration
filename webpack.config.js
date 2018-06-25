@@ -8,21 +8,21 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const config = function(env, argv) {
     return {
-        context: path.resolve(__dirname, 'src'),
+        context: path.join(__dirname, 'src'),
         entry: {
             app: './index.js',
             'production-dependencies' : ['angular', 'jquery', 'underscore']
         },
         output: {
             filename: 'app.bundle.js',
-            path: path.resolve(__dirname, 'build')
+            path: path.join(__dirname, 'build', 'www')
         },
         resolve: {
             extensions: ['.js', '.css', '.html']
         },
         devtool: (env && env.production) ? 'source-maps' : 'eval',
         devServer: {
-            contentBase: path.resolve(__dirname, 'build')
+            contentBase: path.join(__dirname, 'build', 'www')
         },
         module: {
             rules: [
@@ -61,7 +61,7 @@ const config = function(env, argv) {
                     }]
                 },
                 {
-                    test: /\.(png|woff|woff2|eot|ttf|svg|jpg)$/, loader: 'url-loader?limit=1000'
+                    test: /\.(png|woff|woff2|eot|ttf|svg|jpg|svg)$/, loader: 'url-loader?limit=1000'
                 }
             ]
         },
@@ -80,6 +80,10 @@ const config = function(env, argv) {
             }),
             new CopyWebpackPlugin([
                 { from: '../index.html' },
+                {
+                    from: '../server.js',
+                    to: path.join(__dirname, 'build')
+                }
 
             ]),
             new ExtractTextPlugin({

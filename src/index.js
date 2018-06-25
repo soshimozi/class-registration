@@ -9,6 +9,8 @@ import ClassRegistrationController from './controllers/class-registration-contro
 import AdminController from './controllers/admin-controller';
 import ProfileController from './controllers/profile-controller';
 import LoginController from './controllers/login-controller';
+import LogoutController from './controllers/logout-controller';
+import CallbackController from './controllers/callback-controller';
 
 // require('angular-animate');
 require('bootstrap');
@@ -20,6 +22,7 @@ require('underscore');
 require('fullcalendar');
 require('moment');
 require('angular-touch');
+require('angular-auth0');
 
 const app = angular.module('calendar-app', [
     'ngRoute',
@@ -29,7 +32,8 @@ const app = angular.module('calendar-app', [
     'ui.calendar',
     'ui.utils.masks',
     'ngTouch',
-    require('angular-breadcrumbs')
+    require('angular-breadcrumbs'),
+    'auth0.auth0'
 ]);
 
 app.controller('HomeController', HomeController);
@@ -37,11 +41,16 @@ app.controller('ClassRegistrationController', ClassRegistrationController);
 app.controller('AdminController', AdminController);
 app.controller('ProfileController', ProfileController);
 app.controller('LoginController', LoginController);
+app.controller('LogoutController', LogoutController);
+app.controller('CallbackController', CallbackController);
 
-app.config(require('./routes'));
+app.service('authService', require('./services/auth-service'));
+
+app.config(require('./config'));
 
 
-app.run(($browser, $rootScope, $templateCache, $location) => {
+app.run(($browser, $rootScope, $templateCache, $location, authService) => {
+
     $browser.baseHref = function () { return "/" };
 
     $templateCache.put('breadcrumbs.html', require('./templates/breadcrumbs.html'));
@@ -53,40 +62,80 @@ app.run(($browser, $rootScope, $templateCache, $location) => {
     $rootScope.headerPhoto = require('./images/yoga-1.jpg');
 
     $rootScope.topLinks = [
-        {
-            label: 'admin',
-            page: 'admin',
-            scope: 'admin'
-        },
-        {
-            label: 'login',
-            page: 'login',
-            scope: 'login'
-        },
-        {
-            label: 'profile',
-            page: 'profile',
-            scope: 'profile'
-        }
+        // {
+        //     label: 'admin',
+        //     page: 'admin',
+        //     scope: ['admin']
+        // },
+        // {
+        //     label: 'login',
+        //     page: 'login',
+        //     scope: ['login']
+        // },
+        // {
+        //     label: 'profile',
+        //     page: 'profile',
+        //     scope: ['profile']
+        // },
+        // {
+        //     label: 'logout',
+        //     page: 'logout',
+        //     scope: ['profile', 'admin']
+        // }
     ];
 
-    // TODO: get scopes from users roles/authentication
-    $rootScope.scopes = ['admin','profile'];
-    //$rootScope.scopes = ['login'];
-
-    $rootScope.gotoPage = (pageName) => {
-        $location.path(pageName);
+    // // TODO: get scopes from users roles/authentication
+    // $rootScope.scopes = ['login'];
+    //
+    // $rootScope.gotoPage = (pageName) => {
+    //     $location.path(pageName);
+    // };
+    //
+    // $rootScope.hasScope = (scope) => {
+    //     if(scope == null && $rootScope.scopes.length == 0) return false;
+    //
+    //     let diff = underscore.difference(scope, $rootScope.scopes);
+    //     return diff.length == 0;
+    // };
+    //
+    // $rootScope.isOnPage = (pageName) => {
+    //
+    //     var currentPage = $location.$$path.replace(/^\/+/g, '');
+    //     return (currentPage === pageName);
+    // };
+    $rootScope.login = () => {
+        authService.login();
     };
 
-    $rootScope.hasScope = (scope) => {
-        if(scope == null && $rootScope.scopes.lengh == 0) return false;
-        return underscore.contains($rootScope.scopes, scope);
+    $rootScope.isAuthenticated = () => {
+        return authService.isAuthenticated();
     };
 
-    $rootScope.isOnPage = (pageName) => {
-
-        var currentPage = $location.$$path.replace(/^\/+/g, '');
-        return (currentPage === pageName);
+    $rootScope.logout = () => {
+        authService.logout();
     };
+
+    $rootScope.$on("$routeChangeStart", function(event, next, current) {
+        console.log('next', next);
+
+        // if(next && next.requiresLogin && !AuthService.isAuthenticated()) {
+        //     console.log('preventing location change?');
+        //     event.preventDefault();
+        //     $location.path('/');
+        // }
+    });
+
+    $rootScope.$on('$routeChangeError', function(event, current, previous, rejection) {
+        console.log('route error');
+
+        if (rejection === 'Unauthorized') {
+            $location.path('/');
+        }
+    });
+
+    $rootScope.authService = authService;
+
+    authService.handleAuthentication();
 
 });
+

@@ -2,7 +2,9 @@
 
 export default class {
 
-    constructor($interval, $location, $rootScope, breadcrumbs) {
+    constructor($interval, $location, $rootScope, breadcrumbs, angularAuth0) {
+
+        console.log('angularAuth0', angularAuth0);
 
         this.yogaPhotos = [
             require('../images/yoga-1.jpg'),
@@ -19,6 +21,29 @@ export default class {
             {image: require('../images/carousel-image-3.jpg'), desc: 'Image 03', id: 2}
         ];
 
+        this.contentBlocks = [
+            {
+                header: 'Yoga for Everyone',
+                body:   'Yoga unites the mind, body, and soul in a way that eases tension, reduces inflammation, and promotes health and well being.' +
+                '  Regular practice will help you reach improve and perfect poses, correct posture and positioning, and improve' +
+                ' your breathing and outlook on life.',
+                img: this.yogaPhotos[1]
+            },
+            {
+                header: 'Enhance Your Wellness',
+                body:   'Yoga is a great way to improve your endurance in other physical activities. After a run, or heavy workout,' +
+                ' yoga will help your body relax while stretching, strengthening, and lengthening the muscles you were just working on.',
+                img: this.yogaPhotos[2]
+            },
+            {
+                header: 'Calm Your Mind',
+                body:   'Yoga not only helps improve your body, but also helps with mindfulness and meditation. It is important to take a break' +
+                ' from daily life in order to focus on yourself and get clarity. Focusing on your breath during practice is key to staying' +
+                ' in tune with your mind and body.',
+                img: this.yogaPhotos[3]
+            }
+            ];
+
         // initial image index
         this._Index = 0;
 
@@ -31,7 +56,7 @@ export default class {
         this.breadcrumbs = breadcrumbs;
         $rootScope.breadcrumbs = breadcrumbs;
 
-        console.log('breadcrumbs:', breadcrumbs);
+        console.log('localStorage', localStorage);
 
     }
 
